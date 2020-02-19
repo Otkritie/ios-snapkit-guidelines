@@ -1,6 +1,6 @@
 # Что такое SnapKit:
 
-**SnapKit** - это DSL обертка над Auto Layout, которая позволяет нам верстать наши view кодом, без xib'ов и storyboard'ов.
+**SnapKit** - это DSL обертка над Auto Layout, которая позволяет верстать вьюхи кодом, без xib'ов и storyboard'ов.
 **Подробнее [здесь](http://snapkit.io) и [здесь](http://snapkit.io/docs/).**
 
 **Плюсы данного подхода:**
@@ -13,9 +13,9 @@
 
 # Главное из примера (см. ниже):
 
-- Протокол **[Grid](https://git.redmadrobot.com/Openbank/Openbank-iOS/blob/develop/Source/Openbank/Modules/BaseInterface/Protocol/Grid.swift)** с **private extension**, где находятся все базовые значения отступов, а также, если нужно, кастомные отступы (например: space22)
-- Протокол **[Appearance](https://git.redmadrobot.com/Openbank/Openbank-iOS/blob/develop/Source/Openbank/Modules/BaseInterface/Protocol/Appearance.swift)** с **private extension**, где находятся различные magic numbers и кастомные шрифты/цвета, которые не нужно добавлять глобально. В общем всё, что касается **UI** конретной view.
-- Структура **[Constants](https://git.redmadrobot.com/Openbank/Openbank-iOS/blob/develop/Source/Openbank/Modules/Helper/Constants.swift)** с **private extension**, где находятся числовые и текстовые константы
+- Протокол **[Grid](Grid.swift)** с **private extension**, где находятся все базовые значения отступов, а также, если нужно, кастомные отступы (например: space22)
+- Протокол **[Appearance](Appearance.swift)** с **private extension**, где находятся различные magic numbers и кастомные шрифты/цвета, которые не нужно добавлять глобально. В общем всё, что касается **UI** конретной view.
+- Структура **[Constants](Constants.swift)** с **private extension**, где находятся числовые и текстовые константы
 - UI элементы вынесены визуально в отдельную блок сверху класса
 - UI элементы иницилизируются и конфигурируются красиво с [**Then**](https://github.com/devxoul/Then), желательно через lazy computed property
 - Есть две **раздельные** функции **addSubviews()** и **makeConstraints()**
@@ -110,10 +110,6 @@ class LoginView: UIView {
 }
 
 ```
-
-# Еще примеры:
-- [SearchZeroScreenView](https://git.redmadrobot.com/Openbank/Openbank-iOS/blob/develop/Source/Openbank/Openbank/Classes/Presentation/Payments/View/ZeroScreen/SearchZeroScreenView.swift)
-
 
 # Советы:
 
