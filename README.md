@@ -15,7 +15,7 @@
 
 - Протокол **[Grid](Source/Grid.swift)** с **private extension**, где находятся все базовые значения отступов, а также, если нужно, кастомные отступы (например: space22)
 - Протокол **[Appearance](Source/Appearance.swift)** с **private extension**, где находятся различные magic numbers и кастомные шрифты/цвета, которые не нужно добавлять глобально. В общем всё, что касается **UI** конретной view.
-- Структура **[Constants](Source/Constants.swift)** с **private extension**, где находятся числовые и текстовые константы
+- Структура **Constants** с **private extension**, где находятся числовые и текстовые константы
 - UI элементы вынесены визуально в отдельную блок сверху класса
 - UI элементы иницилизируются и конфигурируются красиво с [**Then**](https://github.com/devxoul/Then), желательно через lazy computed property
 - Есть две **раздельные** функции **addSubviews()** и **makeConstraints()**
@@ -29,14 +29,14 @@ private extension Appearance {
     var parallaxValue: CGFloat { 10 }
     var alphaContainerView: CGFloat { 0.5 }
     var borderColor: UIColor { .customColor }
-    var customFont: UIFont { .customFont } 
+    var customFont: UIFont { .customFont }
     var buttonCornerRadius: CGFloat { 10 }
 }
 
 private extension Grid {
     /// Верхний отступ emailTextField
     var space22: CGFloat { 22 }
-    /// Высота registrationButton
+    /// Высота loginButton
     var space55: CGFloat { 55 }
 }
 
@@ -45,7 +45,8 @@ private extension Constants {
     static let textCharatersLimit = 140
 }
 
-class LoginView: UIView {
+/// Экран логина с использованеим email и password
+final class LoginView: UIView {
        
     // MARK: - Private Properties
     
@@ -60,7 +61,7 @@ class LoginView: UIView {
         $0.borderColor = appearance.borderColor
     }
     
-    private lazy var registrationButton = UIButton().then {
+    private lazy var loginButton = UIButton().then {
         $0.backgroundColor = .scDeepBlush
         $0.cornerRadius = appearance.buttonCornerRadius
     }
@@ -87,7 +88,7 @@ class LoginView: UIView {
     private func addSubviews() {
         addSubview(emailTextField)
         addSubview(passwordTextField)
-        addSubview(registrationButton)
+        addSubview(loginButton)
     }
     
     private func makeConstraints() {
@@ -101,7 +102,7 @@ class LoginView: UIView {
             make.leading.trailing.equalToSuperview().inset(grid.space16)
         }
         
-        registrationButton.snp.makeConstraints { make in
+        loginButton.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview().inset(grid.space8)
             make.height.equalTo(grid.space55)
         }
