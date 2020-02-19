@@ -13,9 +13,9 @@
 
 # Главное из примера (см. ниже):
 
-- Протокол **[Grid](Grid.swift)** с **private extension**, где находятся все базовые значения отступов, а также, если нужно, кастомные отступы (например: space22)
-- Протокол **[Appearance](Appearance.swift)** с **private extension**, где находятся различные magic numbers и кастомные шрифты/цвета, которые не нужно добавлять глобально. В общем всё, что касается **UI** конретной view.
-- Структура **[Constants](Constants.swift)** с **private extension**, где находятся числовые и текстовые константы
+- Протокол **[Grid](Source/Grid.swift)** с **private extension**, где находятся все базовые значения отступов, а также, если нужно, кастомные отступы (например: space22)
+- Протокол **[Appearance](Source/Appearance.swift)** с **private extension**, где находятся различные magic numbers и кастомные шрифты/цвета, которые не нужно добавлять глобально. В общем всё, что касается **UI** конретной view.
+- Структура **[Constants](Source/Constants.swift)** с **private extension**, где находятся числовые и текстовые константы
 - UI элементы вынесены визуально в отдельную блок сверху класса
 - UI элементы иницилизируются и конфигурируются красиво с [**Then**](https://github.com/devxoul/Then), желательно через lazy computed property
 - Есть две **раздельные** функции **addSubviews()** и **makeConstraints()**
