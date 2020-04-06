@@ -1,5 +1,5 @@
 // Grid.swift
-// Copyright © 2020 PJSC Bank Otkritie. All rights reserved.
+// Copyright © PJSC Bank Otkritie. All rights reserved.
 
 @_exported import SnapKit
 @_exported import Then

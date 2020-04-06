@@ -1,5 +1,5 @@
 // Appearance.swift
-// Copyright © 2020 PJSC Bank Otkritie. All rights reserved.
+// Copyright © PJSC Bank Otkritie. All rights reserved.
 
 import UIKit
 

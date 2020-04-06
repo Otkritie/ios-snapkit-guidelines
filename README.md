@@ -86,9 +86,11 @@ final class LoginView: UIView {
     }
     
     private func addSubviews() {
-        addSubview(emailTextField)
-        addSubview(passwordTextField)
-        addSubview(loginButton)
+        add { 
+            emailTextField
+            passwordTextField
+            loginButton
+        }
     }
     
     private func makeConstraints() {
