@@ -24,6 +24,18 @@
 # Пример обычной UIView:
 
 ```swift
+
+// MARK: - Grid
+
+private extension Grid {
+    /// Верхний отступ emailTextField
+    var space22: CGFloat { 22 }
+    /// Высота loginButton
+    var space55: CGFloat { 55 }
+}
+
+// MARK: - Appearance
+
 private extension Appearance {
     var animationDuration: Double { 0.1 }
     var parallaxValue: CGFloat { 10 }
@@ -33,12 +45,7 @@ private extension Appearance {
     var buttonCornerRadius: CGFloat { 10 }
 }
 
-private extension Grid {
-    /// Верхний отступ emailTextField
-    var space22: CGFloat { 22 }
-    /// Высота loginButton
-    var space55: CGFloat { 55 }
-}
+// MARK: - Constants
 
 private extension Constants {
     static let emailPlaceholder = "Введите e-mail"
