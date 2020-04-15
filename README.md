@@ -19,7 +19,7 @@
 - UI элементы вынесены визуально в отдельную блок сверху класса
 - UI элементы иницилизируются и конфигурируются красиво с [**Then**](https://github.com/devxoul/Then), желательно через **lazy computed property**
 - Есть две **раздельные** функции **addSubviews()** и **makeConstraints()**
-- Описываем констреинты в приоритетном порядке Вертикаль (сверху вниз), Горизонталь (слева направо), Размер: **top**, **bottom**, **centerY**, **leading**, **trailing**, **centerX**, **width**, **height**, **size**
+- В функции **addSubviews()** добавление дочерних вьюшек происходит в [**иерархичном виде**](Sources/UIView%2BAdd.swift)
 
 # Пример обычной UIView:
 
@@ -96,13 +96,19 @@ final class LoginView: UIView {
     
     private func addSubviews() {
         add { 
-            emailTextField
-            passwordTextField
-            loginButton
+            contentView {
+                emailTextField
+                passwordTextField
+                loginButton
+            }
         }
     }
     
     private func makeConstraints() {
+        contentView.snp.makeConstraints { make in
+           make.edges.equalToSuperview().inset(grid.space16)
+        }
+        
         emailTextField.snp.makeConstraints { make in
            make.top.equalToSuperview().inset(grid.space22)
            make.leading.trailing.equalToSuperview().inset(grid.space16)
@@ -123,11 +129,15 @@ final class LoginView: UIView {
 
 ```
 
-# Советы:
+# Советы и правила по верстке с помощью SnapKit:
 
 **1. Пишем leading и trailing, вместо left и right**
 
-**2. Все похожие отступы обьединяем вместе**
+**2. Описываем констреинты в приоритетном порядке Вертикаль (сверху вниз), Горизонталь (слева направо), Размер.**
+
+top, bottom, centerY, leading, trailing, centerX, width, height, size
+
+**3. Все похожие отступы обьединяем вместе**
 
 ✅ Правильно
 ```swift
@@ -141,11 +151,11 @@ make.leading.equalToSuperView().inset(grid.space16)
 make.trailing.equalToSuperView().inset(grid.space16)
 ```
 
-**3. В любой непонятной ситуации используем inset**
+**4. В любой непонятной ситуации используем inset**
 
 ✅ Исключение: Если это отступ между двумя элементами: leading к trailing. bottom к top
 
-**4. Используем наиболее краткую запись: edges**
+**5. Используем наиболее краткую запись: edges**
 
 ✅ Правильно
 ```swift
