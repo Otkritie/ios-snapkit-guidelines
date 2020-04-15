@@ -28,6 +28,8 @@
 // MARK: - Grid
 
 private extension Grid {
+    /// heightRow
+    var space60: CGFloat { 60 }
     /// Верхний отступ emailTextField
     var space22: CGFloat { 22 }
     /// Высота loginButton
