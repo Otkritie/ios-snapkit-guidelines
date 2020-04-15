@@ -96,7 +96,7 @@ final class LoginView: UIView {
     
     private func addSubviews() {
         add { 
-            contentView {
+            contentView.add {
                 emailTextField
                 passwordTextField
                 loginButton
