@@ -41,6 +41,22 @@ extension UIView {
         return self
     }
 
+    /// Добавить одну вьюшку и добавить к ней констреинты, согласно инсетам
+    /// - Parameter insets: Инсеты дочерней вьюшки
+    /// - Parameter block: Блок, возвращающий вьюшку
+    @discardableResult
+    public func add(insets: UIEdgeInsets, @AddViewBuilder _ block: () -> (UIView)) -> UIView {
+        let view = block()
+        add { view }
+        view.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(insets.top)
+            $0.bottom.equalToSuperview().inset(insets.bottom)
+            $0.leading.equalToSuperview().inset(insets.left)
+            $0.trailing.equalToSuperview().inset(insets.right)
+        }
+        return self
+    }
+
     /// Вставляет одну вьюшку по индексу
     /// - Parameter index: Индекс вставки вьюшки
     /// - Parameter block: Блок, возвращающий вьюшку
